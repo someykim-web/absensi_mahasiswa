@@ -72,6 +72,36 @@ class KehadiranKelas {
   });
 }
 
+/// Notifikasi untuk mahasiswa (misal: tidak hadir di kelas).
+class Notifikasi {
+  final String judul;
+  final String pesan;
+  final String waktu;
+  final String status; // statusHadir / statusIzin / statusAlpa (menentukan warna & ikon)
+
+  const Notifikasi({
+    required this.judul,
+    required this.pesan,
+    required this.waktu,
+    required this.status,
+  });
+}
+
+/// Dipakai di Dashboard Dosen (tampilan Mingguan): rekap satu pertemuan kelas.
+class RekapPertemuan {
+  final String tanggal;
+  final int hadir;
+  final int izin;
+  final int alpa;
+
+  const RekapPertemuan({
+    required this.tanggal,
+    required this.hadir,
+    required this.izin,
+    required this.alpa,
+  });
+}
+
 // ---------- Data mahasiswa yang sedang login ----------
 
 const Mahasiswa mahasiswaLogin = Mahasiswa(
@@ -88,7 +118,7 @@ const List<MataKuliah> daftarMataKuliah = [
   MataKuliah(
     kode: 'SI34006',
     nama: 'Mobile Programming',
-    dosen: 'Budi Santoso, M.T.',
+    dosen: 'Novario Jaya Perdana, S.Kom., M.T.',
     hari: 'Senin',
     jam: '08.00 - 10.30',
     ruang: 'Lab Komputer 3',
@@ -131,7 +161,7 @@ const List<MataKuliah> daftarMataKuliah = [
 const MataKuliah kelasHariIni = MataKuliah(
   kode: 'SI34006',
   nama: 'Mobile Programming',
-  dosen: 'Budi Santoso, M.T.',
+  dosen: 'Novario Jaya Perdana, S.Kom., M.T.',
   hari: 'Senin',
   jam: '08.00 - 10.30',
   ruang: 'Lab Komputer 3',
@@ -172,6 +202,46 @@ const List<KehadiranKelas> kehadiranKelasHariIni = [
   KehadiranKelas(nama: 'Gilang Ramadhan', nim: '825230162', jamMasuk: '07.51', status: statusHadir),
   KehadiranKelas(nama: 'Hana Putri', nim: '825230177', jamMasuk: '08.01', status: statusHadir),
   KehadiranKelas(nama: 'Ivan Kurniawan', nim: '825230190', jamMasuk: '-', status: statusAlpa),
+];
+
+// ---------- Notifikasi mahasiswa (terbaru di atas) ----------
+
+const List<Notifikasi> daftarNotifikasi = [
+  Notifikasi(
+    judul: 'Izin Tercatat',
+    pesan: 'Izin kamu di Analisis Proses Bisnis pada Rab, 7 Okt 2026 sudah dicatat oleh dosen.',
+    waktu: 'Rab, 7 Okt 2026 • 13.10',
+    status: statusIzin,
+  ),
+  Notifikasi(
+    judul: 'Kamu Tidak Hadir',
+    pesan: 'Kamu tidak hadir di Manajemen Proyek SI pada Kam, 1 Okt 2026. Hubungi dosen jika ada kendala.',
+    waktu: 'Kam, 1 Okt 2026 • 10.45',
+    status: statusAlpa,
+  ),
+  Notifikasi(
+    judul: 'Izin Tercatat',
+    pesan: 'Izin kamu di Interaksi Manusia & Komputer pada Jum, 25 Sep 2026 sudah dicatat oleh dosen.',
+    waktu: 'Jum, 25 Sep 2026 • 11.40',
+    status: statusIzin,
+  ),
+  Notifikasi(
+    judul: 'Kamu Tidak Hadir',
+    pesan: 'Kamu tidak hadir di Mobile Programming pada Sen, 21 Sep 2026. Hubungi dosen jika ada kendala.',
+    waktu: 'Sen, 21 Sep 2026 • 10.40',
+    status: statusAlpa,
+  ),
+];
+
+// ---------- Rekap per pertemuan kelas Mobile Programming (terbaru di atas) ----------
+// Tiap pertemuan jumlahnya 10 mahasiswa (hadir + izin + alpa).
+
+const List<RekapPertemuan> rekapMingguanKelas = [
+  RekapPertemuan(tanggal: 'Sen, 12 Okt 2026', hadir: 7, izin: 1, alpa: 2),
+  RekapPertemuan(tanggal: 'Sen, 5 Okt 2026', hadir: 9, izin: 0, alpa: 1),
+  RekapPertemuan(tanggal: 'Sen, 28 Sep 2026', hadir: 10, izin: 0, alpa: 0),
+  RekapPertemuan(tanggal: 'Sen, 21 Sep 2026', hadir: 8, izin: 1, alpa: 1),
+  RekapPertemuan(tanggal: 'Sen, 14 Sep 2026', hadir: 9, izin: 1, alpa: 0),
 ];
 
 // ---------- Fungsi bantu (boleh dipakai di halaman mana saja) ----------

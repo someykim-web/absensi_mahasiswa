@@ -9,11 +9,13 @@ import '../widgets/status_badge.dart';
 /// dan daftar mata kuliah beserta status kehadirannya.
 class DashboardMahasiswaPage extends StatelessWidget {
   final VoidCallback onCheckin;
+  final VoidCallback onNotifikasi;
   final VoidCallback onKeluar;
 
   const DashboardMahasiswaPage({
     super.key,
     required this.onCheckin,
+    required this.onNotifikasi,
     required this.onKeluar,
   });
 
@@ -29,6 +31,14 @@ class DashboardMahasiswaPage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
         actions: [
+          IconButton(
+            icon: Badge(
+              label: Text('${daftarNotifikasi.length}'),
+              child: const Icon(Icons.notifications_rounded),
+            ),
+            tooltip: 'Notifikasi',
+            onPressed: onNotifikasi,
+          ),
           IconButton(
             icon: const Icon(Icons.logout_rounded),
             tooltip: 'Keluar',
